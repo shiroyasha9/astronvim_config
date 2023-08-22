@@ -33,6 +33,7 @@ return {
       },
     },
     filetypes = {
+      lua = true,
       yaml = false,
       markdown = false,
       help = false,
