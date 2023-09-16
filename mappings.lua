@@ -3,6 +3,8 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+local utils = require("astronvim.utils")
+local get_icon =  utils.get_icon
 return {
   -- first key is the mode
   n = {
@@ -32,7 +34,14 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<leader>i"] = {":OrganizeImports<cr>", desc = "Organize Imports (TS)"}
+    ["<leader>i"] = {":OrganizeImports<cr>", desc = "Organize Imports (TS)"},
+    ["<leader>h"] = { desc = get_icon("ArrowRight", 1, true) .. "Harpoon" },
+    ["<leader>hm"] = {"<cmd>lua require('harpoon.mark').add_file()<cr>", desc = "Mark file with harpoon"},
+    ["<leader>hl"] = {"<cmd>lua require('harpoon.ui').nav_next()<cr>", desc = "Go to next harpoon mark"},
+    ["<leader>hh"] = {"<cmd>lua require('harpoon.ui').nav_prev()<cr>", desc = "Go to previous harpoon mark"},
+    ["<leader>he"] = {"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "See all harpoon marks"},
+    ["<leader>ht"] = {"<cmd>Telescope harpoon marks<cr>", desc = "Navigate using telescope"}
+
   },
   t = {
     -- setting a mapping to false will disable it
